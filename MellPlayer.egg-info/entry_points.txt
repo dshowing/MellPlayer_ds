@@ -1,0 +1,3 @@
+[console_scripts]
+mellplayer = mellplayer.start:main
+

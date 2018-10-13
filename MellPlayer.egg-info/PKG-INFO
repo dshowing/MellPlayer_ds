@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: MellPlayer
+Version: 0.1.1.1
+Summary: A tiny terminal player based on Python
+Home-page: https://github.com/Mellcap/MellPlayer
+Author: Mellcap
+Author-email: imellcap@gmail.com
+License: MIT
+Description: UNKNOWN
+Keywords: mellplayer,terminal,playlist,music,cli,player
+Platform: UNKNOWN
