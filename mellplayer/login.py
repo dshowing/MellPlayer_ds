@@ -18,13 +18,13 @@ class login(object):
         str = Netease.qr_request(url)
 
         qr_text = str_addr + str
-        #return qr_text
-        print(qr_text)
+        return qr_text
+        #print(qr_text)
 
-        return QR.showqr(qr_text)
-
-
+        #return QR.showqr(qr_text)
 
 
 
 
+
+login.wechat

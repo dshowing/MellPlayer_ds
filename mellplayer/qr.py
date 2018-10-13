@@ -6,7 +6,8 @@ import qrcode
 
 class QR(object):
 
-    STEP = 10
+    def __init__(self):
+        self.STEP = 10
 
     def str2qr(self, text):
         """
@@ -22,7 +23,7 @@ class QR(object):
         qr.make(fit=True)
 
         img = qr.make_image()
-        return qr2ascii(img)
+        return self.qr2ascii(img)
 
     def qr2ascii(self, image):
         """
@@ -40,9 +41,8 @@ class QR(object):
                 string += p
             string += '\n'
 
-        #return string
-        print string
-
+        return string
+        #print string
 
     def showqr(self, url):
         # args = sys.argv
@@ -50,5 +50,8 @@ class QR(object):
         #     print(alert)
         # elif len(args) == 2:
         #text = args[1]
-        qrcode = str2qr(url)
+        qrcode = self.str2qr(url)
         print(qrcode)
+
+a = 'https://open.weixin.qq.com/connect/confirm?uuid=061Iaz2i5THzOw58'
+QR.showqr(a)

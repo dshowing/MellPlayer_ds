@@ -26,23 +26,18 @@ class Netease(object):
 
     def qr_request(self, url, method='GET', is_raw=True, data=None):
         headers = {'appver': '2.0.2', 'Referer': 'http://music.163.com'}
-        if method == 'GET':
-            result = requests.get(url=url, headers=headers)
-            h = result.text
-            soup = BeautifulSoup(h, "html.parser")
-            a = soup.find_all('img', {'class': 'qrcode lightBorder'})
-            str = str(a)
-            qrcode = str[-20:-4]
 
-        elif method == 'POST' and data:
-            result = requests.post(url=url, data=data, headers=headers)
+        result = requests.get(url=url, headers=headers)
+        h = result.text
+        soup = BeautifulSoup(h, "html.parser")
+        a = soup.find_all('img', {'class': 'qrcode lightBorder'})
+        str = str(a)
+        qrcode = str[-20:-4]
+
         # if request failed, return False
-        #if not result.ok:
-        if not qrcode:
+        if not result.ok:
             return False
-        #result.encoding = 'UTF-8'
-        # if is_raw:
-        #     return json.loads(result.text)
+
         return qrcode
 
 
