@@ -6,28 +6,26 @@ import qrcode
 
 class QR(object):
 
-
-
     def __init__(self, STEP):
         self.STEP = STEP
 
-    def str2qr(self, text, STEP):
+    def str2qr(self, text):
         """
         把给定的字符串生成一个对应的二维码
         """
         qr = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_Q,
-            box_size=STEP,
+            box_size=self.STEP,
             border=0,
         )
         qr.add_data(text)
         qr.make(fit=True)
 
         img = qr.make_image()
-        return self.qr2ascii(img, 10)
+        return self.qr2ascii(img)
 
-    def qr2ascii(self, image, STEP):
+    def qr2ascii(self, image):
         """
         从二维码图片生成ascii二维码
         """
@@ -36,24 +34,20 @@ class QR(object):
         width, height = image.size
 
         pix = image.load()
-        for i in range(0, width, STEP):
-            for j in range(0, height, STEP):
+        for i in range(0, width, self.STEP):
+            for j in range(0, height, self.STEP):
                 p = pix[i, j]
                 p = '██' if p > 0 else '  '
                 string += p
             string += '\n'
-
         return string
         #print string
 
     def showqr(self, url):
-        # args = sys.argv
-        # if len(args) == 1:
-        #     print(alert)
-        # elif len(args) == 2:
-        #text = args[1]
-        qrcode = self.str2qr(url, 10)
-        print(qrcode)
+
+        qrcode = self.str2qr(url)
+        return qrcode
+
 
 # a = 'https://open.weixin.qq.com/connect/confirm?uuid=021lO27PXTaqOwbx'
 # qr = QR(10)

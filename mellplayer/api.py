@@ -9,6 +9,7 @@ Netease Music API
 Created on 2017-02-19
 @author: Mellcap
 '''
+import sys
 import requests
 import json
 from bs4 import BeautifulSoup
@@ -22,12 +23,12 @@ class Netease(object):
     def __init__(self):
         self.playlist_categories = []
 
-
-
     def wechat_request(self, url, method='GET', is_raw=True, data=None):
+        '''
+        调用微信二维码
+        '''
         headers = {'appver': '2.0.2', 'Referer': 'http://music.163.com'}
         payload = {'snsType': '10', 'clientType': 'web2', 'callbackType': 'Login', 'forcelogin': 'true'}
-
         result = requests.get(url=url, headers=headers, params=payload)
 
         # if request failed, return False
@@ -37,12 +38,10 @@ class Netease(object):
         h = result.text
         soup = BeautifulSoup(h, "html.parser")
         a = soup.find_all('img', {'class': 'qrcode lightBorder'})
-        str = str(a)
-        qrcode = str[-20:-4]
-
+        qrstr = str(a)
+        qrcode = qrstr[-20:-4]
+        #返回唯一的16位字串
         return qrcode
-
-
 
 
     def _request(self, url, method='GET', is_raw=True, data=None):

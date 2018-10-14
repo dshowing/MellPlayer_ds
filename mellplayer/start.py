@@ -14,7 +14,7 @@ from mellplayer.login import login
 
 def main():
 
-    Login = login
+    Login = login()
     Login.wechat()
 
 
