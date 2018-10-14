@@ -14,17 +14,15 @@ class login(object):
     def wechat(self):
 
         str_addr = 'https://open.weixin.qq.com/connect/confirm?uuid='
-        url = "https://music.163.com/api/sns/authorize?snsType=10&clientType=web2&callbackType=Login&forcelogin=true"
-        str = Netease.qr_request(url)
+        url = "https://music.163.com/api/sns/authorize"
+        str = Netease.wechat_request(url)
 
+        print('str is: %s' %str)
         qr_text = str_addr + str
-        return qr_text
-        #print(qr_text)
+        #return qr_text
 
-        #return QR.showqr(qr_text)
-
-
+        qr = QR(10)
+        return qr.showqr(qr_text)
 
 
 
-login.wechat

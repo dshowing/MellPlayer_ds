@@ -6,10 +6,12 @@ import qrcode
 
 class QR(object):
 
-    def __init__(self):
-        self.STEP = 10
 
-    def str2qr(self, text):
+
+    def __init__(self, STEP):
+        self.STEP = STEP
+
+    def str2qr(self, text, STEP):
         """
         把给定的字符串生成一个对应的二维码
         """
@@ -23,9 +25,9 @@ class QR(object):
         qr.make(fit=True)
 
         img = qr.make_image()
-        return self.qr2ascii(img)
+        return self.qr2ascii(img, 10)
 
-    def qr2ascii(self, image):
+    def qr2ascii(self, image, STEP):
         """
         从二维码图片生成ascii二维码
         """
@@ -50,8 +52,9 @@ class QR(object):
         #     print(alert)
         # elif len(args) == 2:
         #text = args[1]
-        qrcode = self.str2qr(url)
+        qrcode = self.str2qr(url, 10)
         print(qrcode)
 
-a = 'https://open.weixin.qq.com/connect/confirm?uuid=061Iaz2i5THzOw58'
-QR.showqr(a)
+# a = 'https://open.weixin.qq.com/connect/confirm?uuid=021lO27PXTaqOwbx'
+# qr = QR(10)
+# qr.showqr(a)

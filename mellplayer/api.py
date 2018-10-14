@@ -24,19 +24,21 @@ class Netease(object):
 
 
 
-    def qr_request(self, url, method='GET', is_raw=True, data=None):
+    def wechat_request(self, url, method='GET', is_raw=True, data=None):
         headers = {'appver': '2.0.2', 'Referer': 'http://music.163.com'}
+        payload = {'snsType': '10', 'clientType': 'web2', 'callbackType': 'Login', 'forcelogin': 'true'}
 
-        result = requests.get(url=url, headers=headers)
+        result = requests.get(url=url, headers=headers, params=payload)
+
+        # if request failed, return False
+        if not result.ok:
+            return False
+
         h = result.text
         soup = BeautifulSoup(h, "html.parser")
         a = soup.find_all('img', {'class': 'qrcode lightBorder'})
         str = str(a)
         qrcode = str[-20:-4]
-
-        # if request failed, return False
-        if not result.ok:
-            return False
 
         return qrcode
 
