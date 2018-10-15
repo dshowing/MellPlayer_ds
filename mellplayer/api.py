@@ -44,13 +44,13 @@ class Netease(object):
         return qrcode
 
 
-    def _request(self, url, method='GET', is_raw=True, data=None):
+    def _request(self, url, payload, method='GET', is_raw=True, data=None):
         '''
         对requests简单封装
         '''
         headers = {'appver': '2.0.2', 'Referer': 'http://music.163.com'}
         if method == 'GET':
-            result = requests.get(url=url, headers=headers)
+            result = requests.get(url=url, headers=headers, params=payload)
         elif method == 'POST' and data:
             result = requests.post(url=url, data=data, headers=headers)
         # if request failed, return False
@@ -60,6 +60,56 @@ class Netease(object):
         if is_raw:
             return json.loads(result.text)
         return result.text
+
+#######################################
+#    用户登陆后的请求信息
+#######################################
+    def user_id(self):
+        '''
+        用户ID
+        http://music.163.com/
+        '''
+        url = 'http://music.163.com/'
+        result = self._request(url)
+        return result
+
+    def user_name(self):
+        '''
+        用户name
+        http://music.163.com/
+        '''
+        url = 'http://music.163.com/'
+        result = self._request(url)
+        return result
+
+    def user_playlist_categories(self, user_id):
+        '''
+        用户歌单（创建）
+        https://music.163.com/#/my/m/music/playlist
+        {id: 30408531}
+        '''
+        payload = {id: user_id}
+        url = 'https://music.163.com/#/my/m/music/playlist'
+        result = self._request(url, payload)
+        return result
+
+    def
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def playlist_categories(self):
         '''
