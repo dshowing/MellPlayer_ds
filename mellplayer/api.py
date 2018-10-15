@@ -116,6 +116,7 @@ class Netease(object):
         return result
 
 
+
     def parse_info(self, data, parse_type):
         '''
         解析信息
