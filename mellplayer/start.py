@@ -18,11 +18,11 @@ def main():
     Login.wechat()
 
 
-    # print('Initial Player...')
-    # initial_player()
-    # time_watcher()
-    # key_watcher()
-    # mell_ui.display()
+    print('Initial Player...')
+    initial_player()
+    time_watcher()
+    key_watcher()
+    mell_ui.display()
 
 if __name__ == '__main__':
     main()

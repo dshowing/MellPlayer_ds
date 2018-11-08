@@ -22,6 +22,7 @@ class Netease(object):
 
     def __init__(self):
         self.playlist_categories = []
+        self.user_id = ''
 
     def wechat_request(self, url, method='GET', is_raw=True, data=None):
         '''
@@ -34,6 +35,8 @@ class Netease(object):
         # if request failed, return False
         if not result.ok:
             return False
+
+        "https://music.163.com/#/search/m/?s=%E5%88%A0%E5%BA%93%E8%B7%91%E8%B7%AF%E5%B7%A5%E7%A8%8B%E5%B8%88&type=1002"
 
         h = result.text
         soup = BeautifulSoup(h, "html.parser")

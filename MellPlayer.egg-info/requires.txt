@@ -1,2 +1,2 @@
-pycrypto
 requests
+PyCryptodome

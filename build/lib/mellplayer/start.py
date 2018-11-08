@@ -14,14 +14,15 @@ from mellplayer.login import login
 
 def main():
 
-    login.wechat
+    Login = login()
+    Login.wechat()
 
 
-    # print('Initial Player...')
-    # initial_player()
-    # time_watcher()
-    # key_watcher()
-    # mell_ui.display()
+    print('Initial Player...')
+    initial_player()
+    time_watcher()
+    key_watcher()
+    mell_ui.display()
 
 if __name__ == '__main__':
     main()

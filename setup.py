@@ -17,7 +17,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'requests',
-        'pycrypto'
+        'PyCryptodome'
     ],
 
     entry_points={
